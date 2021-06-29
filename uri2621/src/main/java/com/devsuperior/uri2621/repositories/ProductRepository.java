@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import com.devsuperior.uri2621.dto.ProductMinDTO;
 import com.devsuperior.uri2621.entities.Product;
 import com.devsuperior.uri2621.projections.ProductMinProjection;
 
@@ -20,6 +21,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 			+ "FROM Product obj "
 			+ "WHERE UPPER(obj.provider.name) LIKE UPPER(CONCAT(:name,'%'))"
 			+ " AND obj.amount BETWEEN :min AND :max")
-	List<ProductMinProjection> jpqlSearch(String name, Integer min, Integer max);
+	List<ProductMinDTO> jpqlSearch(String name, Integer min, Integer max);
 
 }
