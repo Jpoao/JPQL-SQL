@@ -13,9 +13,9 @@ public interface MovieRepository extends JpaRepository<Movie, Long>  {
 	@Query(nativeQuery = true ,value = "SELECT movies.id, movies.name FROM movies "
 			+ "INNER JOIN genres ON movies.id_genres = genres.id "
 			+ "where genres.description = :genreName")
-	List<MovieMinProjection> searchRaiz(String genreName);
+	List<MovieMinProjection> sqlSearch(String genreName);
 	
 	@Query(value = "SELECT new com.devsuperior.uri2611.dto.MovieMinDTO(obj.id, obj.name) FROM Movie obj "
 			+ "where obj.genre.description = :genreName")
-	List<MovieMinProjection> searchJpql(String genreName);
+	List<MovieMinProjection> jpqlSearch(String genreName);
 }
