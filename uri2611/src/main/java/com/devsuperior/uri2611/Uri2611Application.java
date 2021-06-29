@@ -34,10 +34,9 @@ public class Uri2611Application implements CommandLineRunner{
 		System.out.println("\n\n");
 		
 		System.out.println("JPQL");
-		List<MovieMinProjection> searchJpql = movieRepository.jpqlSearch("Action");
+		List<MovieMinDTO> searchJpql = movieRepository.jpqlSearch("Action");
 		System.out.println("\n");
-		List<MovieMinDTO> listDTO1 = searchJpql.stream().map(x -> new MovieMinDTO(x)).collect(Collectors.toList());
-		listDTO1.forEach(x -> System.out.println(x.toString()));
+		searchJpql.forEach(x -> System.out.println(x.toString()));
 		
 	}
 }
